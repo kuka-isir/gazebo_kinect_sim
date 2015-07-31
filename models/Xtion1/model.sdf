@@ -1,28 +1,8 @@
 <?xml version="1.0" ?>
 <sdf version="1.4">
   <model name="kinect1">
-    <link name="mount_asus_xtion_pro_link">
-      <visual name="visual">
-        <pose>0 0 0 1.5708 0 0</pose>
-        <geometry>
-	  <mesh>
-  	    <uri>model://Xtion1/meshes/xtion_pro_stack.dae</uri>
-	  </mesh>
-        </geometry>
-      </visual>
-      <collision name="collision">
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <box>
-            <size>0.0330 0.2760 0.0120</size>
-          </box>
-        </geometry>
-      </collision>
-      <inertial>
-        <mass>0.170</mass>
-      </inertial>
-    </link>
-    <link name="kinect_link">
+    <link name="kinect1_link">
+      <gravity>false</gravity>
       <inertial>
         <mass>0.17</mass>
       </inertial>
@@ -34,6 +14,7 @@
         </geometry>
       </collision>
       <visual name="visual">
+        <pose>-0.015 0.0035 0.004 0 0 0</pose>
         <geometry>
           <mesh>
             <uri>model://Xtion1/meshes/xtion_pro_camera.dae</uri>

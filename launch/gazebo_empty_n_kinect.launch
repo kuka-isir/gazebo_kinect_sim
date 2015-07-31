@@ -6,8 +6,5 @@
     <arg name="world_name" value="$(find gazebo_kinect_sim)/worlds/empty_n_kinect.world"/>
     <!-- more default parameters can be changed here -->
   </include>
-
-  <node name="tf_kinect1" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 kinect1_depth_optical_frame world 100" respawn="false" output="screen" /> 
-  <node name="tf_kinect2" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 kinect2_depth_optical_frame world 100" respawn="false" output="screen" /> 
  
 </launch>
