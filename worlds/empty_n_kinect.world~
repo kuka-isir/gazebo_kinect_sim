@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://Xtion1</uri>
+      <name>kinect1</name>
+      <pose>1.0 0 1.0 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>10.073000 0.276000 0.072000</size>
+          </box>
+        </geometry>
+	</collision>
+      <link name="kinect_link">
+	      <sensor type="depth" name="camera"> 
+  		   <plugin name="kinect_camera_controller" filename="libgazebo_ros_openni_kinect.so">   
+			   <cameraName>kinect1_here</cameraName>
+			</plugin>
+		</sensor>
+	</link>
+    </include>
+    <include>
+      <uri>model://Xtion2</uri>
+      <name>kinect2</name>
+      <pose>0 1.0 1.0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://bookshelf</uri>
+      <name>Bookshelf</name>
+      <pose>2 0 0 0 0 0</pose>
+    </include>
+  </world>
+</sdf>
