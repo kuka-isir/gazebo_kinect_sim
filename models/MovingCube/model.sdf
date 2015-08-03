@@ -32,8 +32,8 @@
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>world</odometryTopic>
       <odometryFrame>world</odometryFrame>
-      <odometryRate>20.0</odometryRate>
-      <robotBaseFrame>base_link</robotBaseFrame>
+      <odometryRate>30.0</odometryRate>
+      <robotBaseFrame>cube_link</robotBaseFrame>
     </plugin>
   </model>
 </sdf>
