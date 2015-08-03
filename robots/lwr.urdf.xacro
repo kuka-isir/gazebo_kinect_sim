@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       name="lwr" >
+
+  <property name="M_PI" value="3.1415926535897931" />
+  <property name="XORIGIN" value="-0.500" />
+  <property name="YORIGIN" value="0.000" />
+  <property name="ZORIGIN" value="0.800" />
+  <!-- lbr-->
+  <xacro:include filename="$(find lwr_description)/urdf/lwr.urdf.xacro" />
+
+  <!-- generic simulator_gazebo plugins -->
+
+  <xacro:include filename="$(find lwr_description)/gazebo/lwr.gazebo.urdf.xacro"/>
+  <xacro:include filename="$(find lwr_description)/urdf/lwr.transmission.xacro"/>
+  <!-- materials for visualization -->
+  <xacro:include filename="$(find lwr_description)/urdf/materials.urdf.xacro" />
+
+  <!-- world-->
+  <link name="world"/>
+
+
+  <link name="base_link"/>
+  <joint name="base_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="${XORIGIN} ${YORIGIN} ${ZORIGIN}"/>
+  </joint>
+
+  <gazebo reference="base_link">
+    <static>true</static>>
+  </gazebo>
+
+  <xacro:macro name="tool">
+    <link name="ati_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.730" />
+        <inertia
+          ixx="0.0001"
+          ixy="0.0"
+          ixz="0.0"
+          iyy="0.0001"
+          iyz="0.0"
+          izz="0.0001" />
+      </inertial>
+    </link>
+    <joint name="ati_joint" type="fixed">
+       <parent link="link_7" />
+       <child link="ati_link" />
+       <origin xyz="0 0 0.0488" rpy="0 0 ${20.0*M_PI/180.0}" />
+    </joint>
+    <link name="ati_polaris_link"/>
+    <joint name="ati_polaris_joint" type="fixed">
+       <parent link="ati_link" />
+       <child link="ati_polaris_link" />
+       <origin xyz="0 0 0.0584" rpy="0 0 0" />
+    </joint>
+  </xacro:macro>
+
+  <!--lbr-->
+  <xacro:lwr parent="base_link">
+    <!-- Position from origin -->
+    <origin xyz="0 0 0.01" rpy="0 0 ${2*M_PI/3}" />
+  </xacro:lwr>
+
+   <xacro:lwr_gazebo/>
+   <xacro:lwr_transmission/>
+   <xacro:tool/>
+
+</robot>
+
