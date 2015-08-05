@@ -10,12 +10,12 @@
     <include>
       <uri>model://Xtion1</uri>
       <name>kinect1</name>
-      <pose>-1.0 1.0 2.2 0 0.7854 -0.7854</pose>
+      <pose>0.5 1.0 2.2 0 0.7854 -1.5708</pose>
     </include>
     <include>
       <uri>model://Xtion2</uri>
       <name>kinect2</name>
-      <pose>1.0 -1.0 2.2 0 0.7854 2.3562</pose>
+      <pose>0.5 0.9 1.0 0 0.0 -1.5708</pose>
     </include>
     <include>
       <uri>model://cafe_table</uri>
@@ -23,8 +23,8 @@
       <pose>-0.5 0 0 0 0 0</pose>
     </include>
     <include>
-      <uri>model://MovingCube</uri>
-      <name>moving_cube</name>
+      <uri>model://MovingHuman</uri>
+      <name>moving_human</name>
       <pose>0 2 0 0 0 0</pose>
     </include>
     <include>

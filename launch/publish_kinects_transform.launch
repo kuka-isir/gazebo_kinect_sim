@@ -1,10 +1,10 @@
 <launch>
 
-  <node pkg="tf" type="static_transform_publisher" name="calib_kinect1" args="-1 1 2.2 0.14644661 0.35355339 -0.35355339 0.85355339 /world /kinect1_link 100" />
+  <node pkg="tf" type="static_transform_publisher" name="calib_kinect1" args="0.5 1.0 2.2 0.27059915 0.27059815 -0.65328243 0.65328003 /world /kinect1_link 100" />
   <node pkg="tf" type="static_transform_publisher" name="calib_kinect1_optical" args="0 -0.020 0.0 -0.5 0.5 -0.5 0.5  /kinect1_link /kinect1_depth_optical_frame 100" />
 
 
-  <node pkg="tf" type="static_transform_publisher" name="calib_kinect2" args="1 -1 2.2 -0.35355339 0.14644661 0.85355339 0.35355339 /world /kinect2_link 100" />
+  <node pkg="tf" type="static_transform_publisher" name="calib_kinect2" args="0.5 0.9 1.0 0 0 -0.70710808 0.70710548 /world /kinect2_link 100" />
   <node pkg="tf" type="static_transform_publisher" name="calib_kinect2_optical" args="0 -0.020 0.0 -0.5 0.5 -0.5 0.5  /kinect2_link /kinect2_depth_optical_frame 100" />
 
 </launch>
