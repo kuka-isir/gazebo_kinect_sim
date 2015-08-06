@@ -6,5 +6,5 @@
     <arg name="world_name" value="$(find gazebo_kinect_sim)/worlds/empty_n_kinect.world"/>
     <!-- more default parameters can be changed here -->
   </include>
- 
+
 </launch>
