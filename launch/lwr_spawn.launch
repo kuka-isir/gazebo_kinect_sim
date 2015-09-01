@@ -1,12 +1,10 @@
 <launch>
   
-  <!-- send pr2 urdf to param server -->
-  <include file="$(find gazebo_kinect_sim)/launch/lwr_upload.launch" />
-
-  <!-- push robot_description to factory and spawn robot in gazebo -->
-  <node name="spawn_lwr_model" pkg="gazebo_ros" type="spawn_model" args="-x -0 -y 0 -z 0 -R 0.0 -Y 0.0 -P 0.0 -unpause -urdf -param robot_description -model lwr -ros_namespace /gazebo" respawn="false" output="screen" />
-
-  <!-- default bringup script -->
+  <!-- Load robot's URDF, controllers and publishers -->
   <include file="$(find gazebo_kinect_sim)/launch/lwr_bringup.launch" />
 
+  <!-- Spawn the robot into Gazebo -->
+  <node name="spawn_lwr_model" pkg="gazebo_ros" type="spawn_model" args="-x -0.0 -y 0 -z 0.0 -R 0.0 -Y 0.0 -P 0.0 -unpause -urdf -param robot_description -model lwr -ros_namespace /gazebo" respawn="false" output="screen" />
+
 </launch>
+

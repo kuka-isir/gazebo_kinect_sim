@@ -1,20 +1,23 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="robot_name" default="/"/>
 
-  <group ns="$(arg robot_name)">
-        <param name="tf_prefix" value="$(arg robot_name)" />
-        <include file="$(find gazebo_kinect_sim)/launch/lwr_upload.launch"/>
-        
-        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
-        </node>
+  <!-- Load robot URDF Model -->
+  <include file="$(find gazebo_kinect_sim)/launch/lwr_upload.launch">
+	  <arg name="x_origin" value="-0.5"/>
+	  <arg name="y_origin" value="0.0"/>
+	  <arg name="z_origin" value="0.8"/>
+  </include>
 
-        <node pkg="joint_state_publisher" type="joint_state_publisher" output="screen" name="joint_state_publisher">
-                <param name="use_gui" value="true"/>
-                <param name="publish_default_velocities" value="true"/>
-                <param name="publish_default_efforts" value="true"/>
-                <param name="rate" value="100"/>
-        </node>
-  </group>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find gazebo_kinect_sim)/config/lwr_trajectory_control.yaml" command="load"/>
+
+  <!-- Load the controllers -->
+  <node name="lwr_trajectory_controller" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args="ros_control_arm_controller joint_state_controller "/>
+  
+  <!-- Robot state publisher -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"/>
+
 </launch>
 

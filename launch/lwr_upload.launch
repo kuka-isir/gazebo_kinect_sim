@@ -1,8 +1,12 @@
 <?xml version="1.0"?>
 <launch>
 
+  <arg name="x_origin" default="0.0"/>
+  <arg name="y_origin" default="0.0"/>
+  <arg name="z_origin" default="0.0"/>
+
   <param name="robot_description" command="
-        $(find xacro)/xacro.py '$(find gazebo_kinect_sim)/robots/lwr.urdf.xacro'" />
+        $(find xacro)/xacro.py '$(find gazebo_kinect_sim)/robots/kuka_lwr_no_orocos.urdf.xacro' X0:=$(arg x_origin) Y0:=$(arg y_origin) Z0:=$(arg z_origin)" />
 
   <param name="root_link" type="str" value="link_0"/>
   <param name="tip_link" type="str" value="link_7"/>

@@ -3,9 +3,9 @@
        name="lwr" >
 
   <property name="M_PI" value="3.1415926535897931" />
-  <property name="XORIGIN" value="-0.500" />
-  <property name="YORIGIN" value="0.000" />
-  <property name="ZORIGIN" value="0.800" />
+  <xacro:arg name="X0" default="0.0"/>
+  <xacro:arg name="Y0" default="0.0"/>
+  <xacro:arg name="Z0" default="0.0"/>
   <!-- lbr-->
   <xacro:include filename="$(find lwr_description)/urdf/lwr.urdf.xacro" />
 
@@ -24,7 +24,7 @@
   <joint name="base_joint" type="fixed">
     <parent link="world"/>
     <child link="base_link"/>
-    <origin xyz="${XORIGIN} ${YORIGIN} ${ZORIGIN}"/>
+    <origin xyz="$(arg X0) $(arg Y0) $(arg Z0)"/>
   </joint>
 
   <gazebo reference="base_link">
